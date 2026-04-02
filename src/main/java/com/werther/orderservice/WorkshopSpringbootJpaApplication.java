@@ -9,5 +9,4 @@ public class WorkshopSpringbootJpaApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(WorkshopSpringbootJpaApplication.class, args);
 	}
-
 }
