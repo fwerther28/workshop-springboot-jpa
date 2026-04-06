@@ -41,7 +41,7 @@ Implemented a clean, industry-standard architecture to ensure maintainability an
 Following the same logic used in my Learning Java Fundamentals repository, this project emphasizes **Separation of Concerns.** Just as in accounting where we separate different cost centers for better auditing, here I ensure that each layer of the API has a single responsibility, avoiding "God Classes" and ensuring a predictable data flow. 
 
 **🚀 How to Run**
-1. Clone the repository: git clone https://github.com/fwerther28/workshop-springboot-jpa
+1. Clone the repository: https://github.com/fwerther28/workshop-springboot-jpa
 2. Open the project in **Spring Tool Suite (STS)** or InteliJ.
 3. Run as a Spring Boot App.
 4. **Access the API:** The application is configured to run on **port 8081.**
