@@ -1,22 +1,24 @@
 	package com.werther.orderservice.config;
 	
 	import java.time.Instant;
-	import java.util.Arrays;
-	
-	import org.springframework.beans.factory.annotation.Autowired;
-	import org.springframework.boot.CommandLineRunner;
-	import org.springframework.context.annotation.Configuration;
-	import org.springframework.context.annotation.Profile;
-	
-	import com.werther.orderservice.entities.Category;
-	import com.werther.orderservice.entities.Order;
-	import com.werther.orderservice.entities.Product;
-	import com.werther.orderservice.entities.User;
-	import com.werther.orderservice.entities.enums.OrderStatus;
-	import com.werther.orderservice.repositories.CategoryRepository;
-	import com.werther.orderservice.repositories.OrderRepository;
-	import com.werther.orderservice.repositories.ProductRepository;
-	import com.werther.orderservice.repositories.UserRepository;
+import java.util.Arrays;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+
+import com.werther.orderservice.entities.Category;
+import com.werther.orderservice.entities.Order;
+import com.werther.orderservice.entities.OrderItem;
+import com.werther.orderservice.entities.Product;
+import com.werther.orderservice.entities.User;
+import com.werther.orderservice.entities.enums.OrderStatus;
+import com.werther.orderservice.repositories.CategoryRepository;
+import com.werther.orderservice.repositories.OrderItemRepository;
+import com.werther.orderservice.repositories.OrderRepository;
+import com.werther.orderservice.repositories.ProductRepository;
+import com.werther.orderservice.repositories.UserRepository;
 	
 	@Configuration
 	@Profile("test")
@@ -33,6 +35,9 @@
 		
 		@Autowired
 		private ProductRepository productRepository;
+		
+		@Autowired
+		private OrderItemRepository orderItemRepository;
 	
 		@Override
 		public void run(String... args) throws Exception {
@@ -70,5 +75,14 @@
 			
 			userRepository.saveAll(Arrays.asList(u1, u2));
 			orderRepository.saveAll(Arrays.asList(o1, o2, o3));
+			
+			OrderItem oi1 = new OrderItem(o1, p1, 2, p1.getPrice());
+			OrderItem oi2 = new OrderItem(o1, p3, 1, p3.getPrice());
+			OrderItem oi3 = new OrderItem(o2, p3, 2, p3.getPrice());
+			OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice());
+			
+			orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
+			
+			
 		}
 	}

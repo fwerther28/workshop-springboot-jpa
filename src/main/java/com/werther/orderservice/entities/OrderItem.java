@@ -24,6 +24,7 @@ public class OrderItem implements Serializable {
 	
 	@EmbeddedId
 	@Setter
+	@JsonIgnore
 	private OrderItemPK id = new OrderItemPK();
 	
 	private Integer quantity;
