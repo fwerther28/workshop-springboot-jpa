@@ -3,7 +3,9 @@ package com.werther.orderservice.entities;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,6 +24,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @EqualsAndHashCode(of = "id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+
 public class Category {
 		
 	@Id
@@ -32,8 +36,8 @@ public class Category {
 	@Setter
 	private String name;
 	
-	@JsonIgnore
 	@ManyToMany(mappedBy = "categories")
+	@JsonIgnore
 	private Set<Product> products = new HashSet<>();
 	
 	public Category(Long id, String name) {

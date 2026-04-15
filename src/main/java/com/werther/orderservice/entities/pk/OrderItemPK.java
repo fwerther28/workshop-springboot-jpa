@@ -2,6 +2,7 @@ package com.werther.orderservice.entities.pk;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.werther.orderservice.entities.Order;
 import com.werther.orderservice.entities.Product;
 
@@ -25,5 +26,6 @@ public class OrderItemPK implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name = "product_id")
+	@JsonIgnore
 	private Product product;
 }

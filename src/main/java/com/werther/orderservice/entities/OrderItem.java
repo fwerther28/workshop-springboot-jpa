@@ -2,7 +2,9 @@ package com.werther.orderservice.entities;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import com.werther.orderservice.entities.pk.OrderItemPK;
 
 import jakarta.persistence.EmbeddedId;
@@ -24,7 +26,6 @@ public class OrderItem implements Serializable {
 	
 	@EmbeddedId
 	@Setter
-	@JsonIgnore
 	private OrderItemPK id = new OrderItemPK();
 	
 	private Integer quantity;
@@ -38,7 +39,7 @@ public class OrderItem implements Serializable {
 		this.price = price;
 	}
 	
-	@JsonIgnore
+	@JsonBackReference
 	public Order getOrder() {
 		return id.getOrder();
 	}
@@ -48,7 +49,7 @@ public class OrderItem implements Serializable {
 	}
 	
 	public Product getProduct() {
-		return id.getProduct();
+		return id.getProduct();	
 	}
 	
 	public void setProduct(Product product) {
