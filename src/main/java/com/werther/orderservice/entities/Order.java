@@ -10,15 +10,17 @@
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 	import com.werther.orderservice.entities.enums.OrderStatus;
-	
-	import jakarta.persistence.Entity;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
 	import jakarta.persistence.GeneratedValue;
 	import jakarta.persistence.GenerationType;
 	import jakarta.persistence.Id;
 	import jakarta.persistence.JoinColumn;
 	import jakarta.persistence.ManyToOne;
 	import jakarta.persistence.OneToMany;
-	import jakarta.persistence.Table;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 	import lombok.AccessLevel;
 	import lombok.EqualsAndHashCode;
 	import lombok.Getter;
@@ -53,6 +55,10 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 		@Setter(AccessLevel.NONE)
 		@JsonManagedReference
 		private Set<OrderItem> items = new HashSet<>();
+		
+		@OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
+		@Setter
+		private Payment payment;
 	
 		public Order(Long id, Instant moment, OrderStatus orderStatus, User client) {
 			super();
