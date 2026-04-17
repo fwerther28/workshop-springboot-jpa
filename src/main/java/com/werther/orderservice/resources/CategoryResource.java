@@ -12,12 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.werther.orderservice.entities.Category;
 import com.werther.orderservice.services.CategoryService;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
 @RequestMapping(value = "/categories")
+@RequiredArgsConstructor
 public class CategoryResource {
 	
-	@Autowired
-	private CategoryService service;
+	private final CategoryService service;
 	
 	@GetMapping
 	public ResponseEntity<List<Category>> findAll() {

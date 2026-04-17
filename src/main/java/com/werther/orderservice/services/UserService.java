@@ -9,11 +9,13 @@ import org.springframework.stereotype.Service;
 import com.werther.orderservice.entities.User;
 import com.werther.orderservice.repositories.UserRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class UserService {
 	
-	@Autowired
-	private UserRepository repository;
+	private final UserRepository repository;
 	
 	public List<User> findAll() {
 		return repository.findAll();

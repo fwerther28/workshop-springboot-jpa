@@ -9,11 +9,13 @@ import org.springframework.stereotype.Service;
 import com.werther.orderservice.entities.Order;
 import com.werther.orderservice.repositories.OrderRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class OrderService {
 	
-	@Autowired
-	private OrderRepository repository;
+	private final OrderRepository repository;
 	
 	public List<Order> findAll() {
 		return repository.findAll();

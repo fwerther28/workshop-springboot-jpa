@@ -9,11 +9,13 @@ import org.springframework.stereotype.Service;
 import com.werther.orderservice.entities.Category;
 import com.werther.orderservice.repositories.CategoryRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class CategoryService {
 	
-	@Autowired
-	private CategoryRepository repository;
+	private final CategoryRepository repository;
 	
 	public List<Category> findAll() {
 		return repository.findAll();

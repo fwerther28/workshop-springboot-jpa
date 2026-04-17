@@ -12,12 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.werther.orderservice.entities.User;
 import com.werther.orderservice.services.UserService;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
 @RequestMapping(value = "/users")
+@RequiredArgsConstructor
 public class UserResource {
 	
-	@Autowired
-	private UserService service;
+	private final UserService service;
 	
 	@GetMapping
 	public ResponseEntity<List<User>> findAll() {

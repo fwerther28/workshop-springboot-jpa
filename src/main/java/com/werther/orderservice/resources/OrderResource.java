@@ -12,12 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.werther.orderservice.entities.Order;
 import com.werther.orderservice.services.OrderService;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
 @RequestMapping(value = "/orders")
+@RequiredArgsConstructor
 public class OrderResource {
 	
-	@Autowired
-	private OrderService service;
+	private final OrderService service;
 	
 	@GetMapping
 	public ResponseEntity<List<Order>> findAll() {
