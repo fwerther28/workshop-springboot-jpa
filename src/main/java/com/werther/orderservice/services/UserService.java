@@ -3,10 +3,12 @@ package com.werther.orderservice.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.werther.orderservice.entities.User;
 import com.werther.orderservice.repositories.UserRepository;
+import com.werther.orderservice.resources.exceptions.DatabaseException;
 import com.werther.orderservice.services.exceptions.ResourceNotFoundException;
 
 import lombok.RequiredArgsConstructor;
@@ -31,7 +33,14 @@ public class UserService {
 	}
 	
 	public void delete(Long id) {
-		repository.deleteById(id);
+		if (!repository.existsById(id)) {
+			throw new ResourceNotFoundException(id);
+		}
+		try {
+			repository.deleteById(id);
+		} catch (DataIntegrityViolationException e) {
+			throw new DatabaseException(e.getMessage());
+		}	
 	}
 	
 	public User update(Long id, User obj) {
