@@ -11,6 +11,7 @@ import com.werther.orderservice.repositories.UserRepository;
 import com.werther.orderservice.resources.exceptions.DatabaseException;
 import com.werther.orderservice.services.exceptions.ResourceNotFoundException;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -44,11 +45,13 @@ public class UserService {
 	}
 	
 	public User update(Long id, User obj) {
-		User entity = repository.findById(id).get();
+		User entity = repository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException(id));
+		
 		updateDate(entity, obj);
 		return repository.save(entity);
 	}
-
+	
 	private void updateDate(User entity, User obj) {
 		entity.setName(obj.getName());
 		entity.setEmail(obj.getEmail());

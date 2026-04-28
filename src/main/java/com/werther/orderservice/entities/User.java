@@ -21,7 +21,6 @@
 	
 	@Entity
 	@Table(name = "tb_user")
-	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 	@NoArgsConstructor
 	@Getter
 	@Setter
@@ -45,7 +44,8 @@
 			this.phone = phone;
 			this.password = password;
 		}
-	
+		
+		@com.fasterxml.jackson.annotation.JsonIgnore
 		@OneToMany(mappedBy = "client")
 		@Setter(lombok.AccessLevel.NONE)
 		private List<Order> orders = new ArrayList<>();
