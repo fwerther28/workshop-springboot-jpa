@@ -27,7 +27,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @EqualsAndHashCode(of = "id")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Product {
 	
 	@Id

@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:15
+    container_name: postgres-order-service
+    environment:
+      POSTGRES_USER: werther
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: course_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
