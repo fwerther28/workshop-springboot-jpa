@@ -4,7 +4,7 @@ services:
     container_name: postgres-order-service
     environment:
       POSTGRES_USER: werther
-      POSTGRES_PASSWORD: 123
+      POSTGRES_PASSWORD: SenhaForte0828
       POSTGRES_DB: course_db
     ports:
       - "5432:5432"
