@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.werther.orderservice.entities.User;
 import com.werther.orderservice.repositories.UserRepository;
-import com.werther.orderservice.resources.exceptions.DatabaseException;
+import com.werther.orderservice.services.exceptions.DatabaseException;
 import com.werther.orderservice.services.exceptions.ResourceNotFoundException;
 
 import jakarta.persistence.EntityNotFoundException;
