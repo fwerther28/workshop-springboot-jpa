@@ -5,7 +5,8 @@
 	import java.util.List;
 	
 	import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-	import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 	
 	import jakarta.persistence.Entity;
 	import jakarta.persistence.GeneratedValue;
@@ -34,6 +35,8 @@
 		private String name;
 		private String email;
 		private String phone;
+		
+		@JsonIgnore
 		private String password;
 		
 		public User(Long id, String name, String email, String phone, String password) {
@@ -49,4 +52,6 @@
 		@OneToMany(mappedBy = "client")
 		@Setter(lombok.AccessLevel.NONE)
 		private List<Order> orders = new ArrayList<>();
+		
+
 	}
